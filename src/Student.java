@@ -1,11 +1,33 @@
-public class Student extends Human{
+public final class Student extends Human implements IStudy {
     private String major;
     private float gpa;
+
+    private final String university = "AITU";   // final field (requirement)
 
     public Student(int age, String name, boolean active, String major, float gpa) {
         super(age, name, active);
         this.major = major;
         this.gpa = gpa;
+    }
+
+    @Override
+    public void introduce() {
+        System.out.println("Hi, I'm " + name + ", age " + age + ". I study " + major + ".");
+    }
+
+    @Override
+    public String getRole() {
+        return "Student";
+    }
+
+    @Override
+    public void study() {
+        System.out.println(name + " studies at " + university + ".");
+    }
+
+    @Override
+    public String getStudyInfo() {
+        return "Major: " + major + ", GPA: " + gpa + ", University: " + university;
     }
 
     public String getMajor() {
@@ -22,5 +44,9 @@ public class Student extends Human{
 
     public void setGpa(float gpa) {
         this.gpa = gpa;
+    }
+
+    public final void printStudentCard() {      // final method (requirement)
+        System.out.println("Student card -> Name: " + name + ", Major: " + major + ", GPA: " + gpa);
     }
 }

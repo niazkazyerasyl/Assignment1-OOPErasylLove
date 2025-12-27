@@ -1,18 +1,35 @@
 import java.util.Scanner;
-void main() {
-    Human h1 =new Human(100, "Adam", true);
-    Employee e1 = new Employee(25, "Carl",false, "Teacher",450.5f);
-    Student s1 = new Student (18,"Yerassyl", true,"Smart Technology",2.94f);
 
-    h1.introduce();
-    System.out.println(h1.getName());
-    Scanner scanner = new Scanner(System.in);
-
-    s1.setAge(scanner.nextInt());
-    System.out.println(s1.getName());
-    System.out.println(s1.getGpa());
-    s1.setAge(20);
-    System.out.println(e1.getName());
-    System.out.println(e1.getPosition());
-    System.out.println(s1.getAge());
+public class Main {
+    public static void main(String[] args) {
+        Employee empoloyee1 = new Employee(25, "Carl", false, "Teacher", 450.5f);
+        Human AsHuman = new Employee(30, "Adam", true, "Manager", 900.0f);
+        IWork AsWork = new Employee(40, "Mike", true, "Engineer", 1200.0f);
+        Student student1 = new Student(18, "Yerassyl", true, "Smart Technology", 2.94f);
+        Human sAsHuman = new Student(19, "Aruzhan", true, "Cybersecurity", 3.2f);
+        IStudy sAsStudy = new Student(20, "Dias", false, "Data Science", 3.6f);
+        empoloyee1.introduce();
+        System.out.println(empoloyee1.getRole());
+        System.out.println(empoloyee1.getName());
+        System.out.println(empoloyee1.getWorkInfo());
+        empoloyee1.study();
+        System.out.println(empoloyee1.getStudyInfo());
+        student1.introduce();
+        System.out.println(student1.getRole());
+        System.out.println(student1.getMajor());
+        System.out.println(student1.getGpa());
+        student1.study();
+        System.out.println(student1.getStudyInfo());
+        student1.printStudentCard();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter new age for student " + student1.getName() + ": ");
+        int newAge = scanner.nextInt();
+        student1.setAge(newAge);
+        System.out.println("Updated age: " + student1.getAge());
+        AsHuman.introduce();
+        sAsHuman.introduce();
+        AsWork.work();
+        sAsStudy.study();
+        scanner.close();
+    }
 }
